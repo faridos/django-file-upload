@@ -1,19 +1,12 @@
-from django.conf.urls import patterns, include, url
+from django.urls  import  include, path
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 from app.views import ProfileImageView
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^$', ProfileImageView.as_view(), name='profile_image_upload'),
-    # Examples:
-    # url(r'^$', 'myproject.views.home', name='home'),
-    # url(r'^myproject/', include('myproject.foo.urls')),
+urlpatterns = [
+    path('', ProfileImageView.as_view(), name='profile_image_upload'),
+    path('admin/', admin.site.urls),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
-)
+]

@@ -4,15 +4,18 @@ Demo of file upload
 forms.py
 ```
 from django import forms
-class ProfileImageForm(forms.Form):
-    image = forms.FileField(label='Select a profile Image')
+class ProfileImageForm(forms.Form):  
+    # using FileField, it works
+    #image = forms.FileField(label='Select a profile Image')
+    image = models.BinaryField(editable = True)
 ```
 
 models.py
 ```
 from django.db import models
 class ProfileImage(models.Model):
-    image = models.FileField(upload_to='profile/%Y/%m/%d')
+    #image = models.FileField(upload_to='profile/%Y/%m/%d')
+    image = models.FileField()
 ```
 
 views.py
